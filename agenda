@@ -1,0 +1,7 @@
+#!/bin/zsh
+START=$(date +%Y-%m-%d)
+END=$START'T23:59'
+gcalcli agenda $START $END --tsv| python gcalcli2speech.py
+
+
+
