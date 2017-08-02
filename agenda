@@ -1,7 +1,11 @@
 #!/bin/zsh
-START=$(date +%Y-%m-%d)
+if [ -n '$1' ] 
+then
+    START=$(date +%Y-%m-%d -d '+'$1'day')
+else
+    START=$(date +%Y-%m-%d)
+fi
 END=$START'T23:59'
+
 gcalcli agenda $START $END --tsv| python gcalcli2speech.py
-
-
-
+#gcalcli agenda $START $END --tsv
