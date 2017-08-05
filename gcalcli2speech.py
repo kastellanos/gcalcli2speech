@@ -14,6 +14,8 @@ def extractEvents( raw_agenda ):
     return result
 
 def extractDate( raw_agenda ):
+    if( len(raw_agenda)==0):
+        return ((0,0),0,0)
     dt = datetime.strptime(raw_agenda[0].strip().split()[0],'%Y-%m-%d')
     locale.setlocale(locale.LC_ALL, "es_CO.utf8")
     day_number = dt.strftime('%d')
@@ -27,6 +29,8 @@ def readAgenda():
     return s
 
 def buildVoiceScript( date, events, name, language):
+    if(len(events)==0):
+        return "Noo tienes eventos"
     result = ""
     plural = ""
     for i in range(len(events)):
