@@ -61,6 +61,12 @@ def playMP3( filename ):
             out.play( frame )
     except ValueError:
         print( ValueError )
+def playMP3_pygame( filename ):
+    try:
+        from audio import Audio
+        Audio(filename)
+    except ValueError:
+        print("pygame error")
 
 def buildNarration(language='es', name='Andres'):
     raw_agenda = readAgenda()
@@ -70,7 +76,7 @@ def buildNarration(language='es', name='Andres'):
 
 def buildVoice( voice_script, filename="/tmp/agenda.mp3", language='es' ):
     str2MP3( filename, voice_script, language )
-    playMP3( filename )
+    playMP3_pygame( filename )
 
 
 def voiceAgenda():
